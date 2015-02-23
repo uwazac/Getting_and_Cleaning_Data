@@ -1,0 +1,3 @@
+#The dplyr package is utilized extensively for this script. The make.names function (base package) was used to transform the column names into a format more readable by R. The #data was assembled step by step using a transient container object named “interimData”. The “interimData” object was used for subsequent building of the tidy data set and its #transformation.
+#
+#The function labelSub was designed to further tidy the data by replacing the numeric representation of the activities with the descriptive labels of the “Activities” variable.

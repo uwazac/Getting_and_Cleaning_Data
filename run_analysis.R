@@ -9,7 +9,7 @@ yTest<-read.table("/UCI HAR Dataset/test/y_test.txt")
 trainSubjects<-read.table("/UCI HAR Dataset/train/subject_train.txt")
 testSubjects<-read.table("/UCI HAR Dataset/test/subject_test.txt")
 features<-read.table("/UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
-
+ 
 #assemble the data
 interimData<-bind_rows(trainData, testData)
 new_features<-valid_column_names<-make.names(features$V2, unique=TRUE, allow_=TRUE)

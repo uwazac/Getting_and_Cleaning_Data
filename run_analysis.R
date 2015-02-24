@@ -2,13 +2,13 @@
 library(dplyr)
 
 # read in data from files
-trainData<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/train/X_train.txt")
-testData<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/test/X_test.txt")
-yTrain<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/train/y_train.txt")
-yTest<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/test/y_test.txt")
-trainSubjects<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/train/subject_train.txt")
-testSubjects<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/test/subject_test.txt")
-features<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
+trainData<-read.table("~/UCI HAR Dataset/train/X_train.txt")
+testData<-read.table("~/UCI HAR Dataset/test/X_test.txt")
+yTrain<-read.table("~/UCI HAR Dataset/train/y_train.txt")
+yTest<-read.table("~/UCI HAR Dataset/test/y_test.txt")
+trainSubjects<-read.table("~/UCI HAR Dataset/train/subject_train.txt")
+testSubjects<-read.table("~/UCI HAR Dataset/test/subject_test.txt")
+features<-read.table("~/UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
  
 #assemble the data
 interimData<-bind_rows(trainData, testData)

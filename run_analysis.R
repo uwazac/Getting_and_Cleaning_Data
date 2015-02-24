@@ -2,13 +2,13 @@
 library(dplyr)
 
 # read in data from files
-trainData<-read.table("/UCI HAR Dataset/train/X_train.txt")
-testData<-read.table("/UCI HAR Dataset/test/X_test.txt")
-yTrain<-read.table("/UCI HAR Dataset/train/y_train.txt")
-yTest<-read.table("/UCI HAR Dataset/test/y_test.txt")
-trainSubjects<-read.table("/UCI HAR Dataset/train/subject_train.txt")
-testSubjects<-read.table("/UCI HAR Dataset/test/subject_test.txt")
-features<-read.table("/UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
+trainData<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/train/X_train.txt")
+testData<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/test/X_test.txt")
+yTrain<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/train/y_train.txt")
+yTest<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/test/y_test.txt")
+trainSubjects<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/train/subject_train.txt")
+testSubjects<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/test/subject_test.txt")
+features<-read.table("~/uwazac/Getting and Cleaning Data/UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
  
 #assemble the data
 interimData<-bind_rows(trainData, testData)
@@ -30,21 +30,26 @@ mergedData<-bind_cols(subJects, mergedData)
 #Select the relevant variables
 meanData<-select(mergedData, contains("mean"))
 
+#Bind the activities and subjects columns to the table
+meanData<-bind_cols(trainTestDesc, meanData)
+meanData<-bind_cols(subJects, meanData)
+
+
 #Relabel (tidy the table) for easier viewing
 labelSub<-function(mergedData1){
   for (i in 1:dim(mergedData1)[1])
     {
-    if (mergedData1$Activities[i]=="1")
+    if (mergedData1$Activities[i]==1)
         {mergedData1$Activities[i]="STANDING"}
-    else if (mergedData1$Activities[i]=="2")
+    else if (mergedData1$Activities[i]==2)
         {mergedData1$Activities[i]="WALKING_UPSTAIRS"}
-    else if (mergedData1$Activities[i]=="3")
+    else if (mergedData1$Activities[i]==3)
         {mergedData1$Activities[i]="WALKING_DOWNSTAIRS"}
-    else if (mergedData1$Activities[i]=="4")
+    else if (mergedData1$Activities[i]==4)
         {mergedData1$Activities[i]="SITTING"}
-    else if (mergedData1$Activities[i]=="5")
+    else if (mergedData1$Activities[i]==5)
         {mergedData1$Activities[i]="STANDING"}
-    else if(mergedData1$Activities[i]=="6")
+    else if(mergedData1$Activities[i]==6)
         {mergedData1$Activities[i]="LAYING"}
     }
 return(mergedData1)
